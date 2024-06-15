@@ -19,10 +19,10 @@ body{
     text-align: center;
 }
 
-#clickPowerOut{
+.clickPower{
     font-size: 40px;
 }
-#neededPointsOut{
+.neededPoints, .clickPower{
     font-size: 25px;
 }
 
