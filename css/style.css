@@ -15,9 +15,15 @@ body{
     align-items: center;
     width: 500px;
     height: 100vh;
-    font-size: 40px;
     font-weight: 900;
     text-align: center;
+}
+
+#clickPowerOut{
+    font-size: 40px;
+}
+#neededPointsOut{
+    font-size: 25px;
 }
 
 .content-wrapper img{
