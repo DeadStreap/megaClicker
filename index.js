@@ -13,10 +13,8 @@ if(localStorage.getItem("userInfo") == null ){
       };
     localStorage.setItem("userInfo", JSON.stringify(user))
     var userInfo = JSON.parse(localStorage.getItem("userInfo"))
-    console.log(userInfo)
 }else{
     var userInfo = JSON.parse(localStorage.getItem("userInfo"))
-    console.log(userInfo.userClickCount)
 }   
 renderUserInfo(userInfo);
 
@@ -24,6 +22,7 @@ clickBtn.onclick = () =>{
     userInfo.userClickCount += userInfo.userClickPower;
     saveUserInfo(userInfo)
     renderUserInfo(userInfo);
+    checkNeededCount();
 }
 
 
@@ -34,7 +33,7 @@ function saveUserInfo(userInfo){
         userNeededPoints: userInfo.userNeededPoints
     };
     localStorage.setItem("userInfo", JSON.stringify(user))
-    renderUserInfo(user)
+    renderUserInfo(userInfo)
 }
 
 function renderUserInfo(userInfo){
@@ -42,14 +41,13 @@ function renderUserInfo(userInfo){
     clickPowerOut.innerHTML = userInfo.userClickPower
     neededPointsOut.innerHTML = userInfo.userNeededPoints
 }
-
-if(userInfo.userNeededPoints <= userInfo.userClickCount){
-    const user = {
-        userClickCount: 0, 
-        userClickPower: userInfo.userClickPower += 1,
-        userNeededPoints: userInfo.userNeededPoints *= 2
-      };
-    saveUserInfo(user)
+function checkNeededCount(){
+    if(userInfo.userClickCount >= userInfo.userNeededPoints){
+        userInfo.userClickCount = 0;
+        userInfo.userClickPower += 1;
+        userInfo.userNeededPoints *= 2;
+        saveUserInfo(userInfo)
+    }
 }
 
 }
