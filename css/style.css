@@ -17,6 +17,7 @@ body{
     height: 100vh;
     font-size: 40px;
     font-weight: 900;
+    text-align: center;
 }
 
 .content-wrapper img{
