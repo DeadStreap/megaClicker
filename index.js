@@ -2,6 +2,7 @@ window.onload = () => {
 const clickCountOut = document.getElementById("clickCountOut")
 const clickPowerOut = document.getElementById("clickPowerOut")
 const neededPointsOut = document.getElementById("neededPointsOut")
+const neededPointsBtn = document.getElementById("neededPointsBtn")
 const clickBtn = document.getElementById("clickBtn")
 
 
@@ -22,6 +23,9 @@ clickBtn.onclick = () =>{
     userInfo.userClickCount += userInfo.userClickPower;
     saveUserInfo(userInfo)
     renderUserInfo(userInfo);
+}
+
+neededPointsBtn.onclick = () =>{
     checkNeededCount();
 }
 
@@ -43,7 +47,7 @@ function renderUserInfo(userInfo){
 }
 function checkNeededCount(){
     if(userInfo.userClickCount >= userInfo.userNeededPoints){
-        userInfo.userClickCount = 0;
+        userInfo.userClickCount = userInfo.userClickCount -= userInfo.userNeededPoints;
         userInfo.userClickPower += 1;
         userInfo.userNeededPoints *= 2;
         saveUserInfo(userInfo)

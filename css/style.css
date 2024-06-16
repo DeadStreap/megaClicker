@@ -21,13 +21,38 @@ body{
     gap: 5px 0;
 }
 
+.userClickCountWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 5px;
+}
+
+.userClickCountWrapper img, .neededPoints img{
+    width: 35px;
+}
+
 .clickCount{
     font-size: 40px;
 }
+
 .neededPoints, .clickPower{
     font-size: 25px;
 }
 
-.content-wrapper img{
+.neededPoints{
+    display: flex;
+    background-color: #3c72f8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    gap: 0 5px;
     width: 80%;
+}
+
+
+.content-wrapper > img{
+    width: 80%;
+    border-radius: 5px;
 }
