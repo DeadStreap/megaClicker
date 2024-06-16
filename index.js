@@ -11,19 +11,13 @@ const afkPowerUpgradeBtn = document.getElementById("afkPowerUpgradeBtn")
 const clickBtn = document.getElementById("clickBtn")
 
 
-if(localStorage.getItem("userInfo") == null ){
-    const user = {
-        ClickCount: 0, 
-        ClickPower: 1,
-        ClickUpgradeNeededPoints: 1000,
-        AfkUpgradeNeededPoints: 1000,
-        AfkPower: 0,
-      };
-    localStorage.setItem("userInfo", JSON.stringify(user))
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"))
-}else{
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"))
-}   
+let userInfo = JSON.parse(localStorage.getItem("userInfo")) || {
+    ClickCount: 0,
+    ClickPower: 1,
+    ClickUpgradeNeededPoints: 1000,
+    AfkUpgradeNeededPoints: 1000,
+    AfkPower: 0,
+};
 renderUserInfo(userInfo);
 
 clickBtn.onclick = () =>{
