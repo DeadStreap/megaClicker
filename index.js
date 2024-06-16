@@ -1,16 +1,23 @@
 window.onload = () => {
 const clickCountOut = document.getElementById("clickCountOut")
 const clickPowerOut = document.getElementById("clickPowerOut")
-const neededPointsOut = document.getElementById("neededPointsOut")
-const neededPointsBtn = document.getElementById("neededPointsBtn")
+const afkPowerOut = document.getElementById("afkPowerOut")
+
+const neededClickPowerPointsOut = document.getElementById("neededClickPowerPointsOut")
+const neededAfkPowerPointsOut = document.getElementById("neededAfkPowerPointsOut")
+
+const clickPowerUpgradeBtn = document.getElementById("clickPowerUpgradeBtn")
+const afkPowerUpgradeBtn = document.getElementById("afkPowerUpgradeBtn")
 const clickBtn = document.getElementById("clickBtn")
 
 
 if(localStorage.getItem("userInfo") == null ){
     const user = {
-        userClickCount: 0, 
-        userClickPower: 1,
-        userNeededPoints: 1000
+        ClickCount: 0, 
+        ClickPower: 1,
+        ClickUpgradeNeededPoints: 1000,
+        AfkUpgradeNeededPoints: 1000,
+        AfkPower: 0,
       };
     localStorage.setItem("userInfo", JSON.stringify(user))
     var userInfo = JSON.parse(localStorage.getItem("userInfo"))
@@ -20,37 +27,63 @@ if(localStorage.getItem("userInfo") == null ){
 renderUserInfo(userInfo);
 
 clickBtn.onclick = () =>{
-    userInfo.userClickCount += userInfo.userClickPower;
+    userInfo.ClickCount += userInfo.ClickPower;
     saveUserInfo(userInfo)
-    renderUserInfo(userInfo);
 }
 
-neededPointsBtn.onclick = () =>{
-    checkNeededCount();
+clickPowerUpgradeBtn.onclick = () =>{
+    checkClickNeededCount();
 }
 
+afkPowerUpgradeBtn.onclick = () =>{
+    checkAfkNeededCount();
+}
+
+function generateScorePerSecond(value) {
+    setInterval(() => {
+    userInfo.ClickCount += value;
+    saveUserInfo(userInfo)
+    }, 1000); 
+  }
+
+generateScorePerSecond(userInfo.AfkPower)
 
 function saveUserInfo(userInfo){
     const user = {
-        userClickCount: userInfo.userClickCount, 
-        userClickPower: userInfo.userClickPower,
-        userNeededPoints: userInfo.userNeededPoints
+        ClickCount: userInfo.ClickCount, 
+        ClickPower: userInfo.ClickPower,
+        ClickUpgradeNeededPoints: userInfo.ClickUpgradeNeededPoints,
+        AfkUpgradeNeededPoints: userInfo.AfkUpgradeNeededPoints,
+        AfkPower: userInfo.AfkPower
     };
     localStorage.setItem("userInfo", JSON.stringify(user))
     renderUserInfo(userInfo)
 }
 
 function renderUserInfo(userInfo){
-    clickCountOut.innerHTML = userInfo.userClickCount
-    clickPowerOut.innerHTML = userInfo.userClickPower
-    neededPointsOut.innerHTML = userInfo.userNeededPoints
+    clickCountOut.innerHTML = userInfo.ClickCount
+    clickPowerOut.innerHTML = userInfo.ClickPower
+    afkPowerOut.innerHTML = userInfo.AfkPower
+    neededClickPowerPointsOut.innerHTML = userInfo.ClickUpgradeNeededPoints
+    neededAfkPowerPointsOut.innerHTML = userInfo.AfkUpgradeNeededPoints
 }
-function checkNeededCount(){
-    if(userInfo.userClickCount >= userInfo.userNeededPoints){
-        userInfo.userClickCount = userInfo.userClickCount -= userInfo.userNeededPoints;
-        userInfo.userClickPower += 1;
-        userInfo.userNeededPoints *= 2;
+
+function checkClickNeededCount(){
+    if(userInfo.ClickCount >= userInfo.ClickUpgradeNeededPoints){
+        userInfo.ClickCount = userInfo.ClickCount -= userInfo.ClickUpgradeNeededPoints;
+        userInfo.ClickPower += 1;
+        userInfo.ClickUpgradeNeededPoints *= 2;
         saveUserInfo(userInfo)
+    }
+}
+
+function checkAfkNeededCount(){
+    if(userInfo.ClickCount >= userInfo.AfkUpgradeNeededPoints){
+        userInfo.ClickCount = userInfo.ClickCount -= userInfo.AfkUpgradeNeededPoints;
+        userInfo.AfkPower += 1;
+        userInfo.AfkUpgradeNeededPoints *= 3;
+        saveUserInfo(userInfo)
+        generateScorePerSecond(userInfo.AfkPower);
     }
 }
 

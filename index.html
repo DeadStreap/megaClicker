@@ -11,14 +11,23 @@
 <body>
 
     <div class="content-wrapper">
+
         <div class="userClickCountWrapper">
             <p id="clickCountOut" class="clickCount"></p>
             <img src="icon/monkey.png">
         </div>
-        <p class="clickPower">+<span id="clickPowerOut"></span> за клик</p>
+
+        <div class="powerInfo">
+            <p class="clickPower">+<span id="clickPowerOut"></span> <img src="/icon/click.png"></p>
+            <p class="clickPower"> <img src="icon/pickaxe.png"> +<span id="afkPowerOut"></span>/c</p>
+        </div>
+
         <img id='clickBtn' src="img/monkey.png">
-        <!-- <p class="neededPoints">Набрать <span id="neededPointsOut"></span> для прокачки</p> -->
-        <button class="neededPoints" id="neededPointsBtn"><span id="neededPointsOut"></span><img src="icon/monkey.png"></button>
+
+        <div class="upgradeBtnWrapper">
+            <button class="upgradeBtn clickUpgrade" id="clickPowerUpgradeBtn"> <img src="/icon/click.png"> <span id="neededClickPowerPointsOut"></span> <img src="icon/monkey.png"></button>
+            <button class="upgradeBtn afkUpgrade" id="afkPowerUpgradeBtn"> <img src="icon/pickaxe.png"> <span id="neededAfkPowerPointsOut"></span> <img src="icon/monkey.png"></button>
+        </div>
 
     </div>
     

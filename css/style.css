@@ -28,7 +28,18 @@ body{
     gap: 0 5px;
 }
 
-.userClickCountWrapper img, .neededPoints img{
+.powerInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 50px;
+}
+
+.powerInfo img{
+    width: 30px;
+}
+
+.userClickCountWrapper img, .upgradeBtn img{
     width: 35px;
 }
 
@@ -36,19 +47,32 @@ body{
     font-size: 40px;
 }
 
-.neededPoints, .clickPower{
+.upgradeBtn, .clickPower{
     font-size: 25px;
 }
 
-.neededPoints{
+.upgradeBtnWrapper{
     display: flex;
-    background-color: #1b4ee8;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    gap: 0 5px;
+}
+
+.upgradeBtn{
+    display: flex;
     padding: 5px 10px;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
     gap: 0 5px;
-    width: 80%;
+    width: 50%;
+}
+.clickUpgrade{
+    background-color: #1b4ee8;
+}
+.afkUpgrade{
+    background-color: #6fb740;
 }
 
 
