@@ -80,7 +80,7 @@ body{
 }
 
 
-.content-wrapper > img{
+.clickImgWrapper > img{
     width: 80%;
     border-radius: 5px;
     pointer-events: none;
