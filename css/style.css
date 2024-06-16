@@ -6,6 +6,9 @@ body{
     color: #fff;
     display: flex;
     justify-content: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -80,4 +83,5 @@ body{
 .content-wrapper > img{
     width: 80%;
     border-radius: 5px;
+    pointer-events: none;
 }
