@@ -22,16 +22,7 @@ if(localStorage.getItem("userInfo") == null ){
     localStorage.setItem("userInfo", JSON.stringify(user))
     var userInfo = JSON.parse(localStorage.getItem("userInfo"))
 }else{
-    const user = {
-        ClickCount: 0, 
-        ClickPower: 1,
-        ClickUpgradeNeededPoints: 1000,
-        AfkUpgradeNeededPoints: 1000,
-        AfkPower: 0,
-      };
-    localStorage.setItem("userInfo", JSON.stringify(user))
     var userInfo = JSON.parse(localStorage.getItem("userInfo"))
-   
 }   
 renderUserInfo(userInfo);
 
